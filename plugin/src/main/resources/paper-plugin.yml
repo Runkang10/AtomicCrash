@@ -1,0 +1,11 @@
+name: AtomicCrash
+description: $description
+version: "$version"
+
+main: io.github.runkang10.atomicCrash.AtomicCrash
+bootstrapper: io.github.runkang10.atomicCrash.AtomicCrashBootstrap
+api-version: "26.1.1"
+load: STARTUP
+
+authors: [ Runkang10 ]
+website: https://github.com/Runkang10/AtomicCrash
