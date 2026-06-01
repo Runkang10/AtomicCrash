@@ -1,6 +1,7 @@
 package io.github.runkang10.atomicCrash.configurations.current
 
 import org.spongepowered.configurate.objectmapping.ConfigSerializable
+import org.spongepowered.configurate.objectmapping.meta.Setting
 
 @ConfigSerializable
 data class TranslationsConfig(
@@ -19,6 +20,8 @@ data class TranslationsConfig(
 
     @ConfigSerializable
     data class CrashTranslations(
+        @Setting("self-crash")
+        val selfCrash: String = "<danger>You cannot crash yourself!",
         val exempt: String = "<danger>You cannot crash <primary><target></primary>!",
         val before: String = "<danger>Sending packets to <primary><target></primary>...",
         val success: String = "<success>Successfully sent packets to <primary><target></primary>.",

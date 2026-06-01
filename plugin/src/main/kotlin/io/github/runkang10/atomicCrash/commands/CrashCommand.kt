@@ -49,6 +49,8 @@ class CrashCommand(
         }.getOrNull() ?: return
 
         val tags = SenderUtility.tags(target.name)
+        if (sender.isSame(target))
+            sender.send(t.crash.selfCrash, tags)
         if (!sender.canCrash(target))
             sender.send(t.crash.exempt, tags)
         else Schedulers.async.runNow {
@@ -60,8 +62,11 @@ class CrashCommand(
                 return@runNow
             }
 
-            crashModule.crash(target)
-            sender.send(t.crash.success, tags)
+            crashModule.crash(target).onSuccess {
+                sender.send(t.crash.success, tags)
+            }.onFailure {
+                sender.send(t.crash.failure, tags)
+            }
         }
     }
 }
