@@ -30,10 +30,7 @@ tasks {
     }
 
     shadowJar {
-        mapOf(
-            "kotlin" to "$projectPackage.dependencies.kotlin",
-            "org.spongepowered.configurate" to "$projectPackage.dependencies.configurate"
-        ).forEach { (original, new) ->
+        mapOf("org.spongepowered.configurate" to "$projectPackage.dependencies.configurate").forEach { (original, new) ->
             relocate(original, new)
         }
 
