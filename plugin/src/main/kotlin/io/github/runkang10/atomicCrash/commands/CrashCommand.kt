@@ -51,7 +51,7 @@ class CrashCommand(
         val tags = SenderUtility.tags(target.name)
         if (sender.isSame(target))
             sender.send(t.crash.selfCrash, tags)
-        if (!sender.canCrash(target))
+        else if (!sender.canCrash(target))
             sender.send(t.crash.exempt, tags)
         else Schedulers.async.runNow {
             sender.send(t.crash.before, tags)
