@@ -26,5 +26,7 @@ class MultiSender(
         }
     }
 
+    fun isSame(target: Player) = (executor ?: sender) == target
+
     fun canCrash(target: Player) = (executor ?: sender).canCrash(target)
 }
