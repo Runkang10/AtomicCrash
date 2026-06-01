@@ -24,7 +24,7 @@ class NMS_26_1 : Module {
         private val MAX_VEC3 = Vec3(MAX_DOUBLE, MAX_DOUBLE, MAX_DOUBLE)
 
 
-        override val supportedVersion = arrayOf("26.1.1", "26.1.2")
+        override val supportedVersion = arrayOf("26.1.1", "26.1.2", "26.2")
 
         override fun new(): Module = NMS_26_1()
     }
@@ -61,7 +61,7 @@ class NMS_26_1 : Module {
         )
     private val packets get() = listOf(particlePacket, explodePacket, positionPacket)
 
-    override fun crash(player: Player) {
+    override fun crash(player: Player) = runCatching {
         val serverPlayer = (player as CraftPlayer).handle
         packets.forEach { serverPlayer.connection.send(it) }
     }
