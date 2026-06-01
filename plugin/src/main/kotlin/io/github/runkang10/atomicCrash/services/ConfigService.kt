@@ -55,6 +55,10 @@ class ConfigService<T>(
             logger.success("Loaded '$fileName'.")
         }.onFailure {
             logger.error("Could not load '$fileName'! Default configuration will be used.")
+            logger.error("Caused by: " + (it.message ?: "N/A"))
+            it.stackTrace.forEach { element ->
+                logger.error(element.toString())
+            }
         }
     }
 
