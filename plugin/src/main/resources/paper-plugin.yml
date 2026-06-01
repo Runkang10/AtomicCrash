@@ -6,6 +6,7 @@ main: io.github.runkang10.atomicCrash.AtomicCrash
 bootstrapper: io.github.runkang10.atomicCrash.AtomicCrashBootstrap
 api-version: "26.1.1"
 load: STARTUP
+folia-supported: true
 
 authors: [ Runkang10 ]
 website: https://github.com/Runkang10/AtomicCrash
