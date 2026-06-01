@@ -30,8 +30,6 @@ tasks {
     }
 
     shadowJar {
-        minimize()
-
         mapOf(
             "kotlin" to "$projectPackage.dependencies.kotlin",
             "org.spongepowered.configurate" to "$projectPackage.dependencies.configurate"
