@@ -1,6 +1,6 @@
 name: AtomicCrash
-description: $description
-version: "$version"
+description: "$projectDescription"
+version: "$projectVersion"
 
 main: io.github.runkang10.atomicCrash.AtomicCrash
 bootstrapper: io.github.runkang10.atomicCrash.AtomicCrashBootstrap
