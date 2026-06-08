@@ -17,10 +17,12 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
+import org.bukkit.entity.Player
 import org.bukkit.permissions.PermissionDefault
 
 class CrashCommand(
-    private val crash: CrashService,
+    private val crashService: CrashService,
     private val translations: ConfigService<TranslationsConfig>
 ) : Command {
     companion object {
@@ -32,41 +34,47 @@ class CrashCommand(
     override fun execute(): LiteralCommandNode<CommandSourceStack> =
         Commands.literal("crash")
             .permission(EXECUTE_PERMISSION, PermissionDefault.OP)
-            .requires { crash.get() != null }
+            .requires { crashService.get() != null }
             .then(Commands.argument("target", ArgumentTypes.player()).execute(::execute))
             .build()
 
 
     private fun execute(context: CommandContext<CommandSourceStack>) {
-        val t = translations.get()
+        val translations = translations.get()
 
         val source = context.source
-        val sender = MultiSender(t.prefix, source.executor, source.sender)
+        val sender = MultiSender(translations.prefix, source.executor, source.sender)
         val target = runCatching {
             context.getArgument("target", PlayerSelectorArgumentResolver::class.java)
                 .resolve(source)
                 .firstOrNull()
         }.getOrNull() ?: return
 
-        val tags = SenderUtility.tags(target.name)
+        val tags = SenderUtility.tags(target = target.name)
+        val crashTranslations = translations.crash
         if (sender.isSame(target))
-            sender.send(t.crash.selfCrash, tags)
+            sender.send(crashTranslations.selfCrash, tags)
         else if (!sender.canCrash(target))
-            sender.send(t.crash.exempt, tags)
-        else Schedulers.async.runNow {
-            sender.send(t.crash.before, tags)
+            sender.send(crashTranslations.exempt, tags)
+        else Schedulers.async.runNow { crash(sender, target, tags) }
+    }
 
-            val crashModule = crash.get()
-            if (crashModule == null) {
-                sender.send(t.crash.failure, tags)
-                return@runNow
-            }
+    private fun crash(
+        sender: MultiSender,
+        target: Player,
+        tags: TagResolver
+    ) {
+        val translations = translations.get()
+        val crashTranslations = translations.crash
 
-            crashModule.crash(target).onSuccess {
-                sender.send(t.crash.success, tags)
-            }.onFailure {
-                sender.send(t.crash.failure, tags)
-            }
+        sender.send(crashTranslations.sending, tags)
+
+        val crashModule = crashService.get() ?: run {
+            sender.send(crashTranslations.notEnabled, tags)
+            return
         }
+        crashModule.crash(target)
+            .onSuccess { sender.send(crashTranslations.success, tags) }
+            .onFailure { sender.send(translations.crash.failure, tags) }
     }
 }
