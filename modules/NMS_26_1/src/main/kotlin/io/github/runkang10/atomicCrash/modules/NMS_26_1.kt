@@ -48,7 +48,7 @@ class NMS_26_1 : Module {
             MAX_VEC3,
             MAX_FLOAT,
             MAX_INT,
-            Optional.of(MAX_VEC3),
+            Optional.of(Vec3.ZERO),
             ParticleTypes.EXPLOSION,
             SoundEvents.GENERIC_EXPLODE,
             WeightedList.of()
@@ -63,6 +63,8 @@ class NMS_26_1 : Module {
 
     override fun crash(player: Player) = runCatching {
         val serverPlayer = (player as CraftPlayer).handle
-        packets.forEach { serverPlayer.connection.send(it) }
+        val connection = serverPlayer.connection
+
+        packets.forEach { connection.send(it) }
     }
 }
