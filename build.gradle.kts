@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.3.21"
+    kotlin("jvm") version "2.3.21" apply true
     id("io.papermc.paperweight.userdev") version "2.0.0-beta.21" apply false
 }
 
-allprojects{
+allprojects {
     repositories {
         gradlePluginPortal()
         mavenCentral()
@@ -13,5 +13,5 @@ allprojects{
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
