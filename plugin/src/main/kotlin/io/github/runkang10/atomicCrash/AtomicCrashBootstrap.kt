@@ -3,6 +3,7 @@ package io.github.runkang10.atomicCrash
 import io.github.runkang10.atomicCrash.configurations.current.SettingsConfig
 import io.github.runkang10.atomicCrash.configurations.current.TranslationsConfig
 import io.github.runkang10.atomicCrash.configurations.migrations.SettingsMigration
+import io.github.runkang10.atomicCrash.configurations.migrations.TranslationsMigration
 import io.github.runkang10.atomicCrash.services.ColoredLogger
 import io.github.runkang10.atomicCrash.services.ConfigService
 import io.github.runkang10.atomicCrash.types.BoostrapServiceHolder
@@ -32,7 +33,8 @@ class AtomicCrashBootstrap : PluginBootstrap {
             dataDirectory.resolve("translations.yml"),
             TranslationsConfig::class.java,
             TranslationsConfig(),
-            TranslationsConfig.VERSION
+            TranslationsConfig.VERSION,
+            TranslationsMigration.build()
         )
         settings.load()
         translations.load()
