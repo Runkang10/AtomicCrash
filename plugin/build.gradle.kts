@@ -1,12 +1,13 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm")
     id("com.gradleup.shadow") version "9.4.2"
     id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
-val projectPackage = "io.github.runkang10.atomicCrash"
+version = "1.1.0"
 description = "A different way to surprise cheaters."
-version = "1.0.0"
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
@@ -26,10 +27,11 @@ kotlin {
 tasks {
     runServer {
         minecraftVersion("26.1.2")
-        jvmArgs("-Xms2G", "-Xmx2G")
+        jvmArgs("-Xms1G", "-Xmx2G")
     }
 
     shadowJar {
+        val projectPackage = "io.github.runkang10.atomicCrash"
         mapOf("org.spongepowered.configurate" to "$projectPackage.dependencies.configurate").forEach { (original, new) ->
             relocate(original, new)
         }
@@ -45,4 +47,9 @@ tasks {
             expand(props)
         }
     }
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.compilerOptions {
+    freeCompilerArgs.set(listOf("-Xannotation-default-target=param-property"))
 }
