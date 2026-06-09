@@ -62,7 +62,7 @@ tasks {
         versionNumber.set(version.toString())
         versionType.set("release")
         uploadFile.set(shadowJar)
-        gameVersions.addAll("26.2", "26.1.2", "26.1.1", "26.1")
+        gameVersions.addAll("26.1.2", "26.1.1", "26.1")
         loaders.addAll("paper", "purpur", "folia")
         changelog.set(System.getenv("CHANGELOGS"))
     }
