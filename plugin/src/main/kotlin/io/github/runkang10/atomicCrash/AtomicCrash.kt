@@ -3,7 +3,6 @@ package io.github.runkang10.atomicCrash
 import io.github.runkang10.atomicCrash.services.CommandsService
 import io.github.runkang10.atomicCrash.services.CrashService
 import io.github.runkang10.atomicCrash.types.BoostrapServiceHolder
-import io.github.runkang10.atomicCrash.utilities.Schedulers
 import org.bukkit.plugin.java.JavaPlugin
 
 class AtomicCrash(bootstrapServiceHolder: BoostrapServiceHolder) : JavaPlugin() {
@@ -15,12 +14,12 @@ class AtomicCrash(bootstrapServiceHolder: BoostrapServiceHolder) : JavaPlugin() 
 
 
     override fun onLoad() {
-        Schedulers.load(this)
         crash.load()
         commands.load()
     }
 
     override fun onDisable() {
+        commands.unload()
         crash.unload()
     }
 }
