@@ -64,7 +64,7 @@ tasks {
         uploadFile.set(shadowJar)
         gameVersions.addAll("26.1.2", "26.1.1", "26.1")
         loaders.addAll("paper", "purpur", "folia")
-        changelog.set(System.getenv("CHANGELOGS"))
+        changelog.set(System.getenv("CHANGELOG"))
     }
 }
 
