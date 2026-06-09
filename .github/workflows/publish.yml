@@ -1,0 +1,26 @@
+name: Publish
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  modrinth:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: openjdk
+          java-version: 25
+
+      - name: Publish to Modrinth
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CHANGELOG: ${{ github.event.release.body }}
+        run: ./gradlew :plugin:modrinth
