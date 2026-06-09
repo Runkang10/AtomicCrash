@@ -1,7 +1,7 @@
-name: Publish
+name: Build
 on:
-  release:
-    types: [ published ]
+  - pull_request
+  - push
 
 jobs:
   publish:
@@ -20,8 +20,5 @@ jobs:
           java-version: 25
           cache: gradle
 
-      - name: Publish to Modrinth
-        env:
-          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-          CHANGELOG: ${{ github.event.release.body }}
-        run: ./gradlew :plugin:modrinth --build-cache
+      - name: Build
+        run: ./gradlew :plugin:shadowJar --build-cache
