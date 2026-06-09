@@ -4,7 +4,12 @@ import io.github.runkang10.atomicCrash.commands.AtomicCrashCommand
 import io.github.runkang10.atomicCrash.commands.CrashCommand
 import io.github.runkang10.atomicCrash.configurations.current.SettingsConfig
 import io.github.runkang10.atomicCrash.configurations.current.TranslationsConfig
+import io.github.runkang10.atomicCrash.types.Service
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import org.bukkit.plugin.java.JavaPlugin
 
 class CommandsService(
@@ -13,13 +18,14 @@ class CommandsService(
     crash: CrashService,
     settings: ConfigService<SettingsConfig>,
     translations: ConfigService<TranslationsConfig>,
-) {
+) : Service {
+    private val coroutine = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private val commands = arrayOf(
-        AtomicCrashCommand(settings, translations),
-        CrashCommand(crash, translations)
+        AtomicCrashCommand(coroutine, settings, translations),
+        CrashCommand(coroutine, crash, translations)
     )
 
-    fun load() {
+    override fun load() {
         logger.loading("Commands")
 
         plugin.lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) {
@@ -36,5 +42,9 @@ class CommandsService(
         }
 
         logger.loaded("Commands")
+    }
+
+    override fun unload() {
+        coroutine.cancel()
     }
 }

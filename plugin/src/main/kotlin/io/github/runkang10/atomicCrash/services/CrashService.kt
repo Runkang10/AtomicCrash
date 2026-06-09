@@ -2,17 +2,18 @@ package io.github.runkang10.atomicCrash.services
 
 import io.github.runkang10.atomicCrash.modules.NMS_26_1
 import io.github.runkang10.atomicCrash.shared.Module
+import io.github.runkang10.atomicCrash.types.Service
 import org.bukkit.plugin.java.JavaPlugin
 
 class CrashService(
     private val plugin: JavaPlugin,
     private val logger: ColoredLogger
-) {
+) : Service {
     private val availableModules by lazy { arrayOf(NMS_26_1) }
     private var module: Module? = null
 
 
-    fun load() {
+    override fun load() {
         logger.loading("Crash")
 
         val serverVersion = plugin.server.minecraftVersion
@@ -34,7 +35,7 @@ class CrashService(
 
     fun get(): Module? = module
 
-    fun unload() {
+    override fun unload() {
         logger.unloading("Crash")
         module = null
         logger.unloaded("Crash")
