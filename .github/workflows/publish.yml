@@ -16,7 +16,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v5.2.0
         with:
-          distribution: openjdk
+          distribution: temurin
           java-version: 25
 
       - name: Publish to Modrinth
