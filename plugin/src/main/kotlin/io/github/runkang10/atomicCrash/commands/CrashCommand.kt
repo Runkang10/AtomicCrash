@@ -11,17 +11,20 @@ import io.github.runkang10.atomicCrash.types.commands.MultiSender
 import io.github.runkang10.atomicCrash.utilities.CommandUtility.execute
 import io.github.runkang10.atomicCrash.utilities.CommandUtility.permission
 import io.github.runkang10.atomicCrash.utilities.PermissionUtility
-import io.github.runkang10.atomicCrash.utilities.Schedulers
 import io.github.runkang10.atomicCrash.utilities.SenderUtility
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import org.bukkit.entity.Player
 import org.bukkit.permissions.PermissionDefault
 
 class CrashCommand(
+    private val coroutine: CoroutineScope,
     private val crashService: CrashService,
     private val translations: ConfigService<TranslationsConfig>
 ) : Command {
@@ -56,7 +59,7 @@ class CrashCommand(
             sender.send(crashTranslations.selfCrash, tags)
         else if (!sender.canCrash(target))
             sender.send(crashTranslations.exempt, tags)
-        else Schedulers.async.runNow { crash(sender, target, tags) }
+        else coroutine.launch(Dispatchers.IO) { crash(sender, target, tags) }
     }
 
     private fun crash(

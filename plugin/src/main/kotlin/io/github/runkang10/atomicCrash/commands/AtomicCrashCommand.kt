@@ -12,12 +12,15 @@ import io.github.runkang10.atomicCrash.utilities.CommandUtility.execute
 import io.github.runkang10.atomicCrash.utilities.CommandUtility.permission
 import io.github.runkang10.atomicCrash.utilities.CommandUtility.subcommands
 import io.github.runkang10.atomicCrash.utilities.PermissionUtility
-import io.github.runkang10.atomicCrash.utilities.Schedulers
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.bukkit.permissions.PermissionDefault
 
 class AtomicCrashCommand(
+    private val coroutine: CoroutineScope,
     private val settings: ConfigService<SettingsConfig>,
     private val translations: ConfigService<TranslationsConfig>
 ) : Command {
@@ -46,7 +49,7 @@ class AtomicCrashCommand(
         val sender = MultiSender(t.prefix, source.executor, source.sender)
 
         sender.send(t.reload.before)
-        Schedulers.async.runNow {
+        coroutine.launch(Dispatchers.IO) {
             val settingsResult = settings.reload()
             val translationsResult = translations.reload()
 
