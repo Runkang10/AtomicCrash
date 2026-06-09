@@ -4,7 +4,7 @@ on:
     types: [ published ]
 
 jobs:
-  modrinth:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,9 +18,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 25
+          cache: gradle
 
       - name: Publish to Modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           CHANGELOG: ${{ github.event.release.body }}
-        run: ./gradlew :plugin:modrinth
+        run: ./gradlew :plugin:modrinth --build-cache
