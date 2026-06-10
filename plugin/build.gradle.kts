@@ -12,10 +12,10 @@ description = "A different way to surprise cheaters."
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
+    compileOnly("org.spongepowered:configurate-yaml:4.2.0")
 
     implementation(kotlin("stdlib"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
-    implementation("org.spongepowered:configurate-yaml:4.2.0")
     implementation("org.spongepowered:configurate-extra-kotlin:4.2.0")
 
     implementation(project(":shared"))
@@ -35,11 +35,6 @@ tasks {
     }
 
     shadowJar {
-        val projectPackage = "io.github.runkang10.atomicCrash"
-        mapOf("org.spongepowered.configurate" to "$projectPackage.dependencies.configurate").forEach { (original, new) ->
-            relocate(original, new)
-        }
-
         archiveBaseName.set(rootProject.name)
         archiveVersion.set(version.toString())
         archiveClassifier.set("")
