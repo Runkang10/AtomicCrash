@@ -32,6 +32,12 @@ class ColoredLogger(
     ) =
         log("<danger>", logger::error, content, tags)
 
+    fun error(
+        content: String,
+        cause: Throwable,
+        tags: TagResolver = TagResolver.resolver()
+    ) = logger.error(miniMessage.deserialize("<danger>$content", tags), cause)
+
 
     fun loading(name: String) = info("Loading $name service...")
     fun loaded(name: String) = success("$name service has been loaded.")
