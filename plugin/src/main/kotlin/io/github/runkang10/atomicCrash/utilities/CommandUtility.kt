@@ -12,11 +12,12 @@ object CommandUtility {
 
     fun Literal.permission(
         permission: String,
-        default: PermissionDefault
+        default: PermissionDefault,
+        condition: () -> Boolean = { true }
     ): LiteralArgumentBuilder<CommandSourceStack> = requires {
         val sender = it.sender
         val permission = PermissionUtility.register(permission, default)
-        sender.hasPermission(permission)
+        sender.hasPermission(permission) && condition()
     }
 
     fun <T> Argument<T>.permission(
