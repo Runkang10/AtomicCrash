@@ -15,17 +15,21 @@ import org.bukkit.plugin.java.JavaPlugin
 class CommandsService(
     private val logger: ColoredLogger,
     private val plugin: JavaPlugin,
-    crash: CrashService,
+    private val crash: CrashService,
     settings: ConfigService<SettingsConfig>,
     translations: ConfigService<TranslationsConfig>,
 ) : Service {
-    private val coroutine = CoroutineScope(Dispatchers.IO + SupervisorJob())
-    private val commands = arrayOf(
-        AtomicCrashCommand(coroutine, settings, translations),
-        CrashCommand(coroutine, crash, translations)
-    )
+    private val coroutine by lazy { CoroutineScope(Dispatchers.IO + SupervisorJob()) }
+    private val commands by lazy {
+        arrayOf(
+            AtomicCrashCommand(coroutine, settings, translations),
+            CrashCommand(coroutine, crash, translations)
+        )
+    }
 
     override fun load() {
+        if (crash.get() == null) return
+
         logger.loading("Commands")
 
         plugin.lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) {

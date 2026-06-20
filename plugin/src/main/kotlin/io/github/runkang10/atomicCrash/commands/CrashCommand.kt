@@ -36,8 +36,7 @@ class CrashCommand(
 
     override fun execute(): LiteralCommandNode<CommandSourceStack> =
         Commands.literal("crash")
-            .permission(EXECUTE_PERMISSION, PermissionDefault.OP)
-            .requires { crashService.get() != null }
+            .permission(EXECUTE_PERMISSION, PermissionDefault.OP) { crashService.get() != null }
             .then(Commands.argument("target", ArgumentTypes.player()).execute(::execute))
             .build()
 
