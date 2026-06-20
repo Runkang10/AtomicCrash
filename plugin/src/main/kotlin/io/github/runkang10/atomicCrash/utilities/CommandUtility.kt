@@ -22,11 +22,12 @@ object CommandUtility {
 
     fun <T> Argument<T>.permission(
         permission: String,
-        default: PermissionDefault
+        default: PermissionDefault,
+        condition: () -> Boolean = { true }
     ): Argument<T> = requires {
         val sender = it.sender
         val permission = PermissionUtility.register(permission, default)
-        sender.hasPermission(permission)
+        sender.hasPermission(permission) && condition()
     }
 
 
