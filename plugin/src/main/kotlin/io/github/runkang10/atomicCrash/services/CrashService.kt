@@ -1,5 +1,6 @@
 package io.github.runkang10.atomicCrash.services
 
+import io.github.runkang10.atomicCrash.AtomicCrashAPI
 import io.github.runkang10.atomicCrash.modules.NMS_26_1
 import io.github.runkang10.atomicCrash.shared.Module
 import io.github.runkang10.atomicCrash.types.Service
@@ -30,6 +31,7 @@ class CrashService(
             return
         }
 
+        AtomicCrashAPI.set(this)
         logger.loaded("Crash")
     }
 
@@ -37,6 +39,7 @@ class CrashService(
 
     override fun unload() {
         logger.unloading("Crash")
+        AtomicCrashAPI.set(null)
         module = null
         logger.unloaded("Crash")
     }
