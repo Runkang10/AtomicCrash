@@ -1,0 +1,29 @@
+name: Update Description
+on:
+  push:
+    branches: [ main ]
+    paths: [ README.md ]
+  workflow_dispatch:
+
+jobs:
+  update-modrinth-description:
+    name: Update Description
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5.2.0
+        with:
+          distribution: temurin
+          java-version: 25
+          cache: gradle
+
+      - name: Update Description
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: ./gradlew :plugin:modrinthSyncBody --build-cache
