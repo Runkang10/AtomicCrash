@@ -8,12 +8,13 @@ import io.github.runkang10.atomicCrash.services.CrashService
 import io.github.runkang10.atomicCrash.types.commands.Command
 import io.github.runkang10.atomicCrash.types.commands.CommandMeta
 import io.github.runkang10.atomicCrash.types.commands.MultiSender
-import io.github.runkang10.atomicCrash.utilities.CommandUtility.execute
-import io.github.runkang10.atomicCrash.utilities.CommandUtility.permission
 import io.github.runkang10.atomicCrash.utilities.PermissionUtility
 import io.github.runkang10.atomicCrash.utilities.SenderUtility
+import io.github.runkang10.compactmono.commands.argument
+import io.github.runkang10.compactmono.commands.command
+import io.github.runkang10.compactmono.commands.execute
+import io.github.runkang10.compactmono.commands.permission
 import io.papermc.paper.command.brigadier.CommandSourceStack
-import io.papermc.paper.command.brigadier.Commands
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver
 import kotlinx.coroutines.CoroutineScope
@@ -25,7 +26,7 @@ import org.bukkit.permissions.PermissionDefault
 
 class CrashCommand(
     private val coroutine: CoroutineScope,
-    private val crashService: CrashService,
+    private val crash: CrashService,
     private val translations: ConfigService<TranslationsConfig>
 ) : Command {
     companion object {
@@ -34,11 +35,13 @@ class CrashCommand(
 
     override fun meta() = CommandMeta("Crash players with this command.")
 
-    override fun execute(): LiteralCommandNode<CommandSourceStack> =
-        Commands.literal("crash")
-            .permission(EXECUTE_PERMISSION, PermissionDefault.OP) { crashService.get() != null }
-            .then(Commands.argument("target", ArgumentTypes.player()).execute(::execute))
-            .build()
+    override fun execute(): LiteralCommandNode<CommandSourceStack> = command("crash") {
+        permission(EXECUTE_PERMISSION, PermissionDefault.OP) { crash.get() != null }
+
+        argument("target", ArgumentTypes.player()) {
+            execute(::execute)
+        }
+    }.build()
 
 
     private fun execute(context: CommandContext<CommandSourceStack>) {
@@ -71,7 +74,7 @@ class CrashCommand(
 
         sender.send(crashTranslations.sending, tags)
 
-        val crashModule = crashService.get() ?: run {
+        val crashModule = crash.get() ?: run {
             sender.send(crashTranslations.notEnabled, tags)
             return
         }
