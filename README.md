@@ -1,11 +1,9 @@
 <img src="https://cdn.modrinth.com/data/cached_images/c6b3e022a78b1506335add519bbc2af54a4379ba.png" />
-<!-- modrinth_exclude.start -->
 <center>
   <img src="https://badges.penpow.dev/badges/supported/paper/cozy.svg" />
   <img src="https://badges.penpow.dev/badges/supported/purpur/cozy.svg" />
   <img src="https://badges.penpow.dev/badges/supported/folia/cozy.svg" />
 </center>
-<!-- modrinth_exclude.end -->
 
 <br />
 
