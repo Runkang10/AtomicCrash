@@ -26,4 +26,4 @@ jobs:
       - name: Update Description
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-        run: ./gradlew :plugin:modrinthSyncBody --no-build-cache
+        run: ./gradlew :plugin:modrinthSyncBody --no-configuration-cache --no-build-cache
