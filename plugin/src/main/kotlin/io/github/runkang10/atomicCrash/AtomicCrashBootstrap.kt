@@ -4,9 +4,9 @@ import io.github.runkang10.atomicCrash.configurations.current.SettingsConfig
 import io.github.runkang10.atomicCrash.configurations.current.TranslationsConfig
 import io.github.runkang10.atomicCrash.configurations.migrations.SettingsMigration
 import io.github.runkang10.atomicCrash.configurations.migrations.TranslationsMigration
-import io.github.runkang10.atomicCrash.services.ColoredLogger
 import io.github.runkang10.atomicCrash.services.ConfigService
 import io.github.runkang10.atomicCrash.types.BoostrapServiceHolder
+import io.github.runkang10.compactmono.services.ColoredLogger
 import io.papermc.paper.plugin.bootstrap.BootstrapContext
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext
@@ -23,18 +23,18 @@ class AtomicCrashBootstrap : PluginBootstrap {
         val settings = ConfigService(
             logger,
             dataDirectory.resolve("settings.yml"),
-            SettingsConfig::class.java,
+            SettingsConfig::class,
             SettingsConfig(),
             SettingsConfig.VERSION,
-            SettingsMigration.build()
+            SettingsMigration.build(),
         )
         val translations = ConfigService(
             logger,
             dataDirectory.resolve("translations.yml"),
-            TranslationsConfig::class.java,
+            TranslationsConfig::class,
             TranslationsConfig(),
             TranslationsConfig.VERSION,
-            TranslationsMigration.build()
+            TranslationsMigration.build(),
         )
         settings.load()
         translations.load()
