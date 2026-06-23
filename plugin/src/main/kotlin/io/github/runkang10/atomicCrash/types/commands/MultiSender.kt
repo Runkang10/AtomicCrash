@@ -15,9 +15,9 @@ class MultiSender(
 ) {
     fun send(
         message: String,
-        tags: TagResolver = SenderUtility.tags()
+        tags: TagResolver = SenderUtility.defaultTags
     ) {
-        val component = miniMessage.deserialize(prefix + message, tags)
+        val component = miniMessage.deserialize("$prefix$message", tags)
         if (executor == sender)
             sender.sendMessage(component)
         else {
