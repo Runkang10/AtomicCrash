@@ -9,7 +9,6 @@ import io.github.runkang10.atomicCrash.types.commands.Command
 import io.github.runkang10.atomicCrash.types.commands.CommandMeta
 import io.github.runkang10.atomicCrash.types.commands.MultiSender
 import io.github.runkang10.atomicCrash.utilities.PermissionUtility
-import io.github.runkang10.atomicCrash.utilities.SenderUtility
 import io.github.runkang10.compactmono.commands.command
 import io.github.runkang10.compactmono.commands.execute
 import io.github.runkang10.compactmono.commands.permission
@@ -53,8 +52,6 @@ class AtomicCrashCommand(
         coroutine.launch(Dispatchers.IO) {
             val settingsResult = settings.reload()
             val translationsResult = translations.reload()
-
-            SenderUtility.prefix = translationsResult.getOrThrow().prefix
 
             if (settingsResult.isFailure || translationsResult.isFailure)
                 sender.send(t.reload.failure)
