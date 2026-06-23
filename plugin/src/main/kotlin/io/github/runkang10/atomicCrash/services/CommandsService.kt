@@ -4,7 +4,8 @@ import io.github.runkang10.atomicCrash.commands.AtomicCrashCommand
 import io.github.runkang10.atomicCrash.commands.CrashCommand
 import io.github.runkang10.atomicCrash.configurations.current.SettingsConfig
 import io.github.runkang10.atomicCrash.configurations.current.TranslationsConfig
-import io.github.runkang10.atomicCrash.types.Service
+import io.github.runkang10.compactmono.services.ColoredLogger
+import io.github.runkang10.compactmono.types.GenericService
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,8 +18,8 @@ class CommandsService(
     private val plugin: JavaPlugin,
     private val crash: CrashService,
     settings: ConfigService<SettingsConfig>,
-    translations: ConfigService<TranslationsConfig>,
-) : Service {
+    translations: ConfigService<TranslationsConfig>
+) : GenericService {
     private val coroutine by lazy { CoroutineScope(Dispatchers.IO + SupervisorJob()) }
     private val commands by lazy {
         arrayOf(
