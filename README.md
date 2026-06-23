@@ -18,6 +18,7 @@ mods installed, and hardware. Results are not guaranteed.
   One command with the player's name and done
 - **Exemption system**\
   Only players with a higher exemption number can crash you
+- **Simple API Support**
 - **Folia support**
 - **ViaVersion support**
 
