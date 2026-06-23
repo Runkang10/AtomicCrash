@@ -1,12 +1,10 @@
 package io.github.runkang10.atomicCrash.configurations.current
 
 import org.spongepowered.configurate.objectmapping.ConfigSerializable
-import org.spongepowered.configurate.objectmapping.meta.Comment
 import org.spongepowered.configurate.objectmapping.meta.Setting
 
 @ConfigSerializable
 data class TranslationsConfig(
-    @Comment("DO NOT TOUCH THIS.")
     val version: Int = VERSION,
     val prefix: String = "<secondary>[<primary>Atomic<success>Crash<secondary>] <reset>",
     val crash: CrashTranslations = CrashTranslations(),
@@ -14,7 +12,7 @@ data class TranslationsConfig(
         "<warning>Reloading configurations...",
         "<success>Successfully reloaded configurations.",
         "<danger>Failed to reload configuration!"
-    ),
+    )
 ) {
     companion object {
         const val VERSION = 2
