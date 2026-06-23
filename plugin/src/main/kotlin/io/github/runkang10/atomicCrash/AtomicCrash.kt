@@ -10,7 +10,7 @@ class AtomicCrash(bootstrapServiceHolder: BoostrapServiceHolder) : JavaPlugin() 
     private val settings = bootstrapServiceHolder.settings
     private val translations = bootstrapServiceHolder.translations
     private val crash = CrashService(this, logger)
-    private val commands by lazy { CommandsService(logger, this, crash, settings, translations) }
+    private val commands = CommandsService(logger, this, crash, settings, translations)
 
 
     override fun onLoad() {
