@@ -6,7 +6,7 @@ plugins {
     id("com.modrinth.minotaur") version "2.+"
 }
 
-version = "1.2.0"
+version = "1.2.1"
 description = "A different way to surprise cheaters."
 
 dependencies {
