@@ -1,15 +1,19 @@
 package io.github.runkang10.atomicCrash.services
 
+import io.github.runkang10.compactmono.services.ColoredLogger
+import org.spongepowered.configurate.kotlin.extensions.get
+import org.spongepowered.configurate.kotlin.extensions.set
 import org.spongepowered.configurate.kotlin.objectMapperFactory
 import org.spongepowered.configurate.transformation.ConfigurationTransformation
 import org.spongepowered.configurate.yaml.NodeStyle
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader
 import java.io.File
+import kotlin.reflect.KClass
 
-class ConfigService<T>(
+class ConfigService<T : Any>(
     private val logger: ColoredLogger,
     private val file: File,
-    private val clazz: Class<T>,
+    private val clazz: KClass<T>,
     private val default: T,
     private val currentVersion: Int,
     private val migrations: ConfigurationTransformation.Versioned? = null
@@ -55,6 +59,7 @@ class ConfigService<T>(
             logger.success("Loaded '$fileName'.")
         }.onFailure {
             logger.error("Could not load '$fileName'! Default configuration will be used.", it)
+            default
         }
     }
 
