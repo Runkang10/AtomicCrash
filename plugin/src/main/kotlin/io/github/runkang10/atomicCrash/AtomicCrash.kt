@@ -15,6 +15,11 @@ class AtomicCrash(bootstrapServiceHolder: BoostrapServiceHolder) : JavaPlugin() 
 
     override fun onLoad() {
         crash.load()
+        if (crash.get() == null) {
+            server.pluginManager.disablePlugin(this)
+            return
+        }
+
         commands.load()
     }
 
