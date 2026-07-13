@@ -1,9 +1,9 @@
 <div align="center">
 
 ![LOGO](https://cdn.modrinth.com/data/cached_images/c6b3e022a78b1506335add519bbc2af54a4379ba.png)
-![MODRINTH](https://img.shields.io/modrinth/dt/ZfLBx8El?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&logoSize=auto&label=DOWNLOAD&color=%2300AF5C&link=https%3A%2F%2Fmodrinth.com%2Fproject%2FZfLBx8El)
-![GITHUB](https://img.shields.io/badge/GITHUB-REPO-blue?style=for-the-badge&logo=github&label=GITHUB&link=https%3A%2F%2Fgithub.com%2FRunkang10%2FAtomicCrash)
-![LICENSE](https://img.shields.io/badge/LICENSE-MIT-brightgreen?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FRunkang10%2FAtomicCrash%3Ftab%3DMIT-1-ov-file)
+[![MODRINTH](https://img.shields.io/modrinth/dt/ZfLBx8El?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&logoSize=auto&label=DOWNLOAD&color=%2300AF5C)](https://modrinth.com/project/ZfLBx8El)
+[![GITHUB](https://img.shields.io/badge/GITHUB-REPO-blue?style=for-the-badge&logo=github&label=GITHUB)](https://github.com/Runkang10/AtomicCrash)
+[![LICENSE](https://img.shields.io/badge/LICENSE-MIT-brightgreen?style=for-the-badge)](https://github.com/Runkang10/AtomicCrash?tab=MIT-1-ov-file)
 
 </div>
 
