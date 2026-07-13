@@ -5,7 +5,7 @@ import io.github.runkang10.atomicCrash.commands.CrashCommand
 import io.github.runkang10.atomicCrash.configurations.current.SettingsConfig
 import io.github.runkang10.atomicCrash.configurations.current.TranslationsConfig
 import io.github.runkang10.compactmono.services.ColoredLogger
-import io.github.runkang10.compactmono.types.GenericService
+import io.github.runkang10.compactmono.services.GenericService
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

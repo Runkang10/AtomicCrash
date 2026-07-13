@@ -4,7 +4,7 @@ import io.github.runkang10.atomicCrash.AtomicCrashAPI
 import io.github.runkang10.atomicCrash.modules.NMS_26_1
 import io.github.runkang10.atomicCrash.shared.Module
 import io.github.runkang10.compactmono.services.ColoredLogger
-import io.github.runkang10.compactmono.types.GenericService
+import io.github.runkang10.compactmono.services.GenericService
 import org.bukkit.plugin.java.JavaPlugin
 
 class CrashService(
@@ -28,7 +28,7 @@ class CrashService(
         }
 
         if (module == null) {
-            logger.error("Unable to find a compatible Crash module! Does the plugin support the server version?")
+            logger.error("Unable to find a compatible Crash module! Does the plugin support $serverVersion?")
             return
         }
 
