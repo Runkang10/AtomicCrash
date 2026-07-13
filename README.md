@@ -7,9 +7,6 @@
 
 </div>
 
-<br />
-
-
 ## How it works
 AtomicCrash sends malformed packets with extreme values to the target player's client.
 This may cause the client to crash, freeze, or disconnect depending on the client version,
