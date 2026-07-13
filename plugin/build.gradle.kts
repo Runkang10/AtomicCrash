@@ -14,7 +14,7 @@ dependencies {
     compileOnly("org.spongepowered:configurate-yaml:4.2.0")
 
     implementation(kotlin("stdlib"))
-    implementation("io.github.runkang10:compact-mono:1.0.1")
+    implementation("io.github.runkang10:compact-mono:1.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
     implementation("org.spongepowered:configurate-extra-kotlin:4.2.0")
