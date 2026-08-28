@@ -25,6 +25,6 @@ class AtomicCrash(
     }
 
     override fun onDisable() {
-        AtomicCrashAPI.set(null)
+        AtomicCrashLoader.unload()
     }
 }
