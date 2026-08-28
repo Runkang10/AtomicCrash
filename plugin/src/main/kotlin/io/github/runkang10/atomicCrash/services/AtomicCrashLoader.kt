@@ -19,4 +19,8 @@ object AtomicCrashLoader {
 
         AtomicCrashAPI.set(version.new())
     }
+
+    fun unload() {
+        AtomicCrashAPI.set(null)
+    }
 }
