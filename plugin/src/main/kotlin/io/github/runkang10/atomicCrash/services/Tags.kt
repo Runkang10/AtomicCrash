@@ -1,4 +1,4 @@
-package io.github.runkang10.atomicCrash.utilities
+package io.github.runkang10.atomicCrash.services
 
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
@@ -6,8 +6,5 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 object Tags {
     val EMPTY = TagResolver.empty()
 
-    fun default(
-        target: String = "N/A",
-        version: String = "N/A"
-    ) = TagResolver.resolver(Placeholder.unparsed("target", target))
+    fun default(target: String = "N/A") = TagResolver.resolver(Placeholder.unparsed("target", target))
 }

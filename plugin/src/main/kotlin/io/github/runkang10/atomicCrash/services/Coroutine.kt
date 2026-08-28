@@ -1,4 +1,4 @@
-package io.github.runkang10.atomicCrash.utilities
+package io.github.runkang10.atomicCrash.services
 
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

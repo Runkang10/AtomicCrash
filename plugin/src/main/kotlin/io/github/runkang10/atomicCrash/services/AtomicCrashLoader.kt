@@ -1,5 +1,6 @@
-package io.github.runkang10.atomicCrash
+package io.github.runkang10.atomicCrash.services
 
+import io.github.runkang10.atomicCrash.AtomicCrashAPI
 import io.github.runkang10.atomicCrash.version.NMS_26
 import io.github.runkang10.compactmono.services.ColoredLogger
 import org.bukkit.Bukkit

@@ -1,4 +1,4 @@
-package io.github.runkang10.atomicCrash.utilities
+package io.github.runkang10.atomicCrash.services
 
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
