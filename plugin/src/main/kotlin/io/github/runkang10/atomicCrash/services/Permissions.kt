@@ -35,6 +35,10 @@ object Permissions {
         listOf(CRASH, Core.RELOAD).forEach { node ->
             DefaultPermissions.registerPermission(Permission(node.permission, node.default))
         }
+
+        repeat(10) { i ->
+            DefaultPermissions.registerPermission(Permission("$EXEMPT_PREFIX.$i", PermissionDefault.FALSE))
+        }
     }
 
     fun CommandSender.canCrash(target: Player) = when (this) {
