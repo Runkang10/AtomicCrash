@@ -5,6 +5,7 @@ shadow = "9.6.1"
 paperweightUserdev = "2.0.0-beta.22"
 resourceFactory = "1.3.1"
 runPaper = "3.1.0"
+minotaur = "2.9.0"
 
 # Dependencies
 kotlinx = "1.11.0"
@@ -18,6 +19,7 @@ shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
 paperweightUserdev = { id = "io.papermc.paperweight.userdev", version.ref = "paperweightUserdev" }
 resourceFactoryPaper = { id = "xyz.jpenilla.resource-factory-paper-convention", version.ref = "resourceFactory" }
 runPaper = { id = "xyz.jpenilla.run-paper", version.ref = "runPaper" }
+minotaur = { id = "com.modrinth.minotaur", version.ref = "minotaur" }
 
 
 [libraries]
