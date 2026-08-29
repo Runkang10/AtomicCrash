@@ -26,16 +26,17 @@ As of now there are some limitations with this plugin:
 | Command               | Description                                    |
 |-----------------------|------------------------------------------------|
 | `/crash <target>`     | Attempt to crash the target's Minecraft client |
-| `/atomiccrash reload` | Reload configurations                          |
+| `/atomiccrash info`   | Display informations about the plugin          |
+| `/atomiccrash reload` | Reload the plugin's configurations             |
 
 ## Permissions
-| Permission                               | Description                                                                                                                                                                 | Default                                                               |
-|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| `atomiccrash.command.crash`              | Required to crash players                                                                                                                                                   | OP                                                                    |
-| `atomiccrash.command.atomiccrash`        | Required to use `/atomiccrash`                                                                                                                                              | OP                                                                    |
-| `atomiccrash.command.atomiccrash.reload` | Required to reload                                                                                                                                                          | OP                                                                    |
-| `atomiccrash.exempt.<number>`            | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
+| Permission                        | Description                                                                                                                                                                 | Default                                                               |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| `atomiccrash.command.crash`       | Required to crash players                                                                                                                                                   | OP                                                                    |
+| `atomiccrash.command.core`        | Required to use `/atomiccrash`                                                                                                                                              | OP                                                                    |
+| `atomiccrash.command.core.reload` | Required to `/atomiccrash reload`                                                                                                                                           | OP                                                                    |
+| `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
 ## NOTEs
 - You cannot crash yourself by default, but you can bypass this by executing the command as console
-- This plugin supports 1.21.11, but Java 25 is required for this plugin to work
+- This plugin supports 1.21.10 and 1.21.11, but **Java 25 is required** for this plugin to work
