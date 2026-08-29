@@ -13,9 +13,9 @@ crash, freeze, or disconnect depending on the client version, mods installed, an
 
 ## Features
 - **Simple to use**\
-  One command with the player's name and done
+  One command with the player's name and done.
 - **Exemption system**\
-  Only players with a higher exemption level can crash you
+  Only players with a higher exemption level can crash you.
 
 ## Limitations
 As of now there are some limitations with this plugin:
