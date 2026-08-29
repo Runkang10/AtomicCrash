@@ -24,7 +24,8 @@ class AtomicCrashCommand(
         "<aqua><b>===== AtomicCrash =====</b></aqua>",
         "<yellow>Author: <aqua><u>${pluginMeta.authors.first()}</u></aqua>",
         "<yellow>Version: <aqua><i>${pluginMeta.version}</i></aqua>",
-        "<yellow>Status: <i>$apiStatus</i>"
+        "<yellow>Status: <i>$apiStatus</i>",
+        "<yellow>Source code:<newline><click:open_url:'https://github.com/Runkang10/AtomicCrash'><aqua><u>https://github.com/Runkang10/AtomicCrash</u></aqua></click>"
     )
 
 
