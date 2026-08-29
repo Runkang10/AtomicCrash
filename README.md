@@ -37,6 +37,5 @@ As of now there are some limitations with this plugin:
 | `atomiccrash.command.core.reload` | Required to `/atomiccrash reload`                                                                                                                                           | OP                                                                    |
 | `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
-## NOTEs
-- You cannot crash yourself by default, but you can bypass this by executing the command as console
-- This plugin supports 1.21.10 and 1.21.11, but **Java 25 is required** for this plugin to work
+## NOTE
+This plugin supports _1.21.10_ and _1.21.11_, but **Java 25 is required** for this plugin to work.
