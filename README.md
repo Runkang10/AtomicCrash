@@ -18,7 +18,7 @@ crash, freeze, or disconnect depending on the client version, mods installed, an
   Only players with a higher exemption level can crash you.
 
 ## Limitations
-As of now there are some limitations with this plugin:
+As of now, there are some limitations with this plugin:
 - Bedrock players are fully exempt.
 - Due to the way how this plugin works, clients can install mods to block malformed packets.
 
