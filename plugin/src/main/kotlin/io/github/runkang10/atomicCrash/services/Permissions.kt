@@ -37,7 +37,7 @@ object Permissions {
         }
 
         repeat(10) { i ->
-            DefaultPermissions.registerPermission(Permission("$EXEMPT_PREFIX.$i", PermissionDefault.FALSE))
+            DefaultPermissions.registerPermission(Permission("$EXEMPT_PREFIX.${i + 1}", PermissionDefault.FALSE))
         }
     }
 
