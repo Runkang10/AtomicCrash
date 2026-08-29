@@ -15,26 +15,26 @@ crash, freeze, or disconnect depending on the client version, mods installed, an
 - **Simple to use**\
   One command with the player's name and done
 - **Exemption system**\
-  Only players with a higher exemption number can crash you
+  Only players with a higher exemption level can crash you
 
 ## Limitations
 As of now there are some limitations with this plugin:
-- Bedrock players are fully exempt
-- Due to the way how this plugin works, clients can install mods to block malformed packets
+- Bedrock players are fully exempt.
+- Due to the way how this plugin works, clients can install mods to block malformed packets.
 
 ## Commands
-| Command               | Description                                    |
-|-----------------------|------------------------------------------------|
-| `/crash <target>`     | Attempt to crash the target's Minecraft client |
-| `/atomiccrash info`   | Display informations about the plugin          |
-| `/atomiccrash reload` | Reload the plugin's configurations             |
+| Command               | Description                                     |
+|-----------------------|-------------------------------------------------|
+| `/crash <target>`     | Attempt to crash the target's Minecraft client. |
+| `/atomiccrash info`   | Display informations about the plugin.          |
+| `/atomiccrash reload` | Reload the plugin's configurations.             |
 
 ## Permissions
 | Permission                        | Description                                                                                                                                                                 | Default                                                               |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| `atomiccrash.command.crash`       | Required to crash players                                                                                                                                                   | OP                                                                    |
-| `atomiccrash.command.core`        | Required to use `/atomiccrash`                                                                                                                                              | OP                                                                    |
-| `atomiccrash.command.core.reload` | Required to `/atomiccrash reload`                                                                                                                                           | OP                                                                    |
+| `atomiccrash.command.crash`       | Required to crash players.                                                                                                                                                  | OP                                                                    |
+| `atomiccrash.command.core`        | Required to use `/atomiccrash`.                                                                                                                                             | OP                                                                    |
+| `atomiccrash.command.core.reload` | Required to `/atomiccrash reload`.                                                                                                                                          | OP                                                                    |
 | `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
 ## NOTE
