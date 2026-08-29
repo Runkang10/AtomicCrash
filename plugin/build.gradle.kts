@@ -36,6 +36,7 @@ paperPluginYaml {
     foliaSupported.set(true)
 
     authors.add("Runkang10")
+    website.set("https://github.com/Runkang10/AtomicCrash")
 }
 
 tasks {
