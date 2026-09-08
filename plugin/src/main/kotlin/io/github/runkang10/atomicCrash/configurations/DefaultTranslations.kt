@@ -13,7 +13,10 @@ data class DefaultTranslations(
 @ConfigSerializable
 data class CrashTranslations(
     val insufficientPermission: String = "<red>You don't have permission to crash this player!",
-    val crashed: String = "<aqua><target><green> has been crashed!"
+    val sentPackets: String = "<aqua><target><green> has received the bad packets!",
+    val checking: String = "<yellow>Checking <aqua><target></aqua> status... The result <b>may not</b> be 100% accurate.",
+    val crashed: String = "<aqua><target><green> has been crashed!",
+    val notCrashed: String = "<aqua><target><red> is not crashed!",
 )
 
 @ConfigSerializable
