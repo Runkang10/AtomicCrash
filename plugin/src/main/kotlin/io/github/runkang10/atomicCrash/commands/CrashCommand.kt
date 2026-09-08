@@ -10,6 +10,7 @@ import io.github.runkang10.atomicCrash.services.Permissions
 import io.github.runkang10.atomicCrash.services.Permissions.canCrash
 import io.github.runkang10.atomicCrash.services.PrefixedSender.send
 import io.github.runkang10.atomicCrash.utilities.Tags
+import io.github.runkang10.atomicCrash.utilities.isFloodgatePlayer
 import io.github.runkang10.compactmono.commands.*
 import io.github.runkang10.compactmono.configuration.LoggedConfiguration
 import io.papermc.paper.command.brigadier.CommandSourceStack
@@ -39,6 +40,11 @@ class CrashCommand(
                 val settings = settings.get().check
                 val translations = translations.get().crash
                 val tags = Tags.default(target.name)
+
+                if (target.isFloodgatePlayer()) {
+                    sender.send(translations.bedrockPlayer, tags)
+                    return@execute
+                }
 
                 if (!sender.canCrash(target)) {
                     sender.send(translations.insufficientPermission, tags)
