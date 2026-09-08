@@ -2,6 +2,8 @@ package io.github.runkang10.atomicCrash
 
 import io.github.runkang10.atomicCrash.configurations.DefaultSettings
 import io.github.runkang10.atomicCrash.configurations.DefaultTranslations
+import io.github.runkang10.atomicCrash.configurations.SettingsMigrations
+import io.github.runkang10.atomicCrash.configurations.TranslationsMigrations
 import io.github.runkang10.atomicCrash.services.PrefixedSender
 import io.github.runkang10.compactmono.configuration.LoggedConfiguration
 import io.github.runkang10.compactmono.services.ColoredLogger
@@ -27,7 +29,7 @@ internal class AtomicCrashBootstrap : PluginBootstrap {
             DefaultSettings::class,
             DefaultSettings(),
             ConfigurationOptions.defaults(),
-            null,
+            SettingsMigrations.new(),
             logger
         )
         translations = LoggedConfiguration(
@@ -35,7 +37,7 @@ internal class AtomicCrashBootstrap : PluginBootstrap {
             DefaultTranslations::class,
             DefaultTranslations(),
             ConfigurationOptions.defaults(),
-            null,
+            TranslationsMigrations.new(),
             logger
         )
         settings.load()
