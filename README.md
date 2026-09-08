@@ -16,10 +16,12 @@ crash, freeze, or disconnect depending on the client version, mods installed, an
   One command with the player's name and done.
 - **Exemption system**\
   Only players with a higher exemption level can crash you.
+- **Post-Crash checking**\
+  Checks if the player is actually crashed or not, after the command execution.
 
 ## Limitations
 As of now, there are some limitations with this plugin:
-- Bedrock players are fully exempt.
+- Bedrock players are fully immune to this.
 - Due to the way how this plugin works, clients can install mods to block malformed packets.
 
 ## Commands
