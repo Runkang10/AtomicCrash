@@ -12,6 +12,7 @@ data class DefaultTranslations(
 
 @ConfigSerializable
 data class CrashTranslations(
+    val bedrockPlayer: String = "<red>You cannot crash Bedrock players!",
     val insufficientPermission: String = "<red>You don't have permission to crash this player!",
     val sentPackets: String = "<aqua><target><green> has received the bad packets!",
     val checking: String = "<yellow>Checking <aqua><target></aqua> status... The result <b>may not</b> be 100% accurate.",

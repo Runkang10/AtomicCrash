@@ -13,6 +13,7 @@ object TranslationsMigrations {
             transformation {
                 addAction(NodePath.path("crash")) { _, node ->
                     val translations = CrashTranslations()
+                    node.node("bedrock-player").set(translations.bedrockPlayer)
                     node.node("sent-packets").set(translations.sentPackets)
                     node.node("checking").set(translations.checking)
                     node.node("not-crashed").set(translations.notCrashed)
