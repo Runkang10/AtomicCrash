@@ -20,6 +20,7 @@ dependencies {
         ?.forEach { implementation(project(":versions:${it.name}")) }
 
     compileOnly("io.papermc.paper:paper-api:26.2.build.+")
+    compileOnly("org.geysermc.floodgate:api:2.2.5-SNAPSHOT")
 }
 
 val projectVersion = System.getenv("version")?.removePrefix("v") ?: "0.0.0-DEV"
