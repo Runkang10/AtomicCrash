@@ -87,15 +87,21 @@ class NMS_26 private constructor() : Version {
         particlePacketOf(ParticleTypes.ANGRY_VILLAGER, center)
     )
 
-    private fun weightedListOf(vararg packets: ParticleOptions) = WeightedList.of(
-        *packets.map { particle ->
-            ExplosionParticleInfo(
-                particle,
-                1_000_000_000_000_000_000_000_000_000f,
-                Float.MIN_VALUE
+    @Suppress("SameParameterValue")
+    private fun weightedListOf(vararg particles: ParticleOptions): WeightedList<ExplosionParticleInfo> {
+        val weightedList = WeightedList.builder<ExplosionParticleInfo>()
+        particles.forEach { particle ->
+            weightedList.add(
+                ExplosionParticleInfo(
+                    particle,
+                    1_000_000_000_000_000_000_000_000_000f,
+                    Float.MIN_VALUE
+                )
             )
-        }.toTypedArray()
-    )
+        }
+
+        return weightedList.build()
+    }
 
     private fun particlePacketOf(
         type: ParticleOptions,
