@@ -1,5 +1,6 @@
 package io.github.runkang10.atomicCrash.services
 
+import io.github.runkang10.atomicCrash.utilities.Tags
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver
 import org.bukkit.command.CommandSender
 
