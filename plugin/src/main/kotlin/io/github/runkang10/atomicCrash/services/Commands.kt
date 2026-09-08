@@ -19,7 +19,7 @@ class Commands(
     private val commands by lazy {
         arrayOf(
             AtomicCrashCommand(settings, translations, pluginMeta),
-            CrashCommand(translations)
+            CrashCommand(settings, translations)
         )
     }
 
