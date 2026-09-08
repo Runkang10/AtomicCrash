@@ -56,9 +56,9 @@ class AtomicCrashCommand(
                         return@launch
                     }
 
-                    sender.send(reloadTranslations.reloaded)
-                    @Suppress("UNCHECKED_CAST")
                     PrefixedSender.PREFIX = translations.get().prefix
+
+                    sender.send(reloadTranslations.reloaded)
                 }
             }
         }
