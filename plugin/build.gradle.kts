@@ -1,4 +1,5 @@
 import xyz.jpenilla.resourcefactory.bukkit.BukkitPluginYaml
+import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -35,6 +36,9 @@ paperPluginYaml {
     main.set("io.github.runkang10.atomicCrash.AtomicCrash")
     load.set(BukkitPluginYaml.PluginLoadOrder.STARTUP)
     foliaSupported.set(true)
+    dependencies {
+        server("floodgate", PaperPluginYaml.Load.OMIT, required = false, joinClasspath = true)
+    }
 
     authors.add("Runkang10")
     website.set("https://github.com/Runkang10/AtomicCrash")
