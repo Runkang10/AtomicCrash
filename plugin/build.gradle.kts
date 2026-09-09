@@ -68,7 +68,20 @@ tasks {
         versionNumber.set(projectVersion)
         changelog.set(System.getenv("changelog") ?: "_No changelog provided._")
         loaders.addAll("paper", "purpur", "folia")
-        gameVersions.addAll("1.21.10", "1.21.11", "26.1", "26.1.1", "26.1.2", "26.2")
+        gameVersions.addAll(
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.21.7",
+            "1.21.8",
+            "1.21.9",
+            "1.21.10",
+            "1.21.11",
+            "26.1",
+            "26.1.1",
+            "26.1.2",
+            "26.2"
+        )
 
         syncBodyFrom.set(rootProject.file("README.md").readText())
     }
