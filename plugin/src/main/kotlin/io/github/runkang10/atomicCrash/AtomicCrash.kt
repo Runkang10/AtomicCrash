@@ -28,10 +28,14 @@ class AtomicCrash(
     }
 
     override fun onEnable() {
+        if (AtomicCrashAPI.get() == null) return
+
         server.pluginManager.registerEvents(PlayerListener(settings, translations), this)
     }
 
     override fun onDisable() {
+        if (AtomicCrashAPI.get() == null) return
+
         HandlerList.unregisterAll(this)
         CrashRegistry.clear()
 
