@@ -40,4 +40,4 @@ As of now, there are some limitations with this plugin:
 | `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
 ## NOTE
-This plugin supports _1.21.10_ and _1.21.11_, but **Java 25 is required** for this plugin to work.
+This plugin supports from the latest version down to 1.21.4, but **Java 25 is required** for this plugin to work.
