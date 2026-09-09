@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches: [ "main" ]
-    paths-ignore: [ "*.md", ".github" ]
+    paths-ignore: [ "*.md", ".github/**/*" ]
 
 jobs:
   build:
