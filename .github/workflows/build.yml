@@ -1,0 +1,32 @@
+name: Build
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore: [ "*.md", ".github" ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 25
+          cache: gradle
+
+      - name: Build artifact
+        run: ./gradlew plugin:shadowJar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          path: plugin/build/libs/*.jar
+          archive: false
