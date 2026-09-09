@@ -19,11 +19,13 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: 25
+          java-version: |
+            21
+            25
           cache: gradle
 
       - name: Build artifact
-        run: ./gradlew plugin:shadowJar
+        run: ./gradlew plugin:shadowJar -Porg.gradle.java.installations.paths=$JAVA_HOME_21_X64,$JAVA_HOME_25_X64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7.0.1

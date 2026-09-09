@@ -23,7 +23,9 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: 25
+          java-version: |
+            21
+            25
           cache: gradle
 
       - name: Publish to Modrinth
@@ -33,7 +35,7 @@ jobs:
           title: ${{ github.event.release.name }}
           version: ${{ github.event.release.tag_name }}
           changelog: ${{ github.event.release.body }}
-        run: ./gradlew plugin:modrinth
+        run: ./gradlew plugin:modrinth -Porg.gradle.java.installations.paths=$JAVA_HOME_21_X64,$JAVA_HOME_25_X64
 
 
   update-description:
@@ -51,11 +53,13 @@ jobs:
         uses: actions/setup-java@v6
         with:
           distribution: temurin
-          java-version: 25
+          java-version: |
+            21
+            25
           cache: gradle
 
       - name: Update description (Modrinth)
         env:
           modrinth: true
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-        run: ./gradlew plugin:modrinthSyncBody --no-configuration-cache --no-build-cache
+        run: ./gradlew plugin:modrinthSyncBody --no-configuration-cache --no-build-cache -Porg.gradle.java.installations.paths=$JAVA_HOME_21_X64,$JAVA_HOME_25_X64
