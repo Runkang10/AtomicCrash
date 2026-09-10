@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.paperweightUserdev)
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:26.2.build.+")
+    paperweight.paperDevBundle("26.2.build.+")
 }
