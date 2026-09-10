@@ -16,13 +16,13 @@ abstract class DownloadFile : DefaultTask() {
     fun download() {
         val dest = destination.get().asFile
         if (dest.exists()) {
-            logger.lifecycle("$dest already exists, skipping download.")
+            logger.lifecycle("${dest.name} already exists, skipping download.")
             return
         }
         URI(sourceUrl.get()).toURL().openStream().use { input ->
             dest.outputStream().use { output -> input.copyTo(output) }
         }
-        logger.lifecycle("Downloaded Minecraft client jar to $dest")
+        logger.lifecycle("Downloaded ${dest.name}")
     }
 }
 
