@@ -2,6 +2,7 @@ package io.github.runkang10.atomicCrash.version
 
 import io.github.runkang10.atomicCrash.shared.Version
 import io.github.runkang10.atomicCrash.shared.VersionHeader
+import io.github.runkang10.atomicCrash.shared.asServerPlayer
 import net.minecraft.core.particles.ParticleOptions
 import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.network.protocol.Packet
@@ -10,7 +11,6 @@ import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.entity.PositionMoveRotation
 import net.minecraft.world.phys.Vec3
-import org.bukkit.craftbukkit.entity.CraftPlayer
 import org.bukkit.entity.Player
 import java.util.*
 
@@ -42,7 +42,7 @@ class NMS_1_21_4 private constructor() : Version {
 
 
     override fun crash(player: Player) {
-        val serverPlayer = (player as CraftPlayer).handle
+        val serverPlayer = player.asServerPlayer()
         val connection = serverPlayer.connection
 
         val packets = generatePackets(serverPlayer, serverPlayer.position())
