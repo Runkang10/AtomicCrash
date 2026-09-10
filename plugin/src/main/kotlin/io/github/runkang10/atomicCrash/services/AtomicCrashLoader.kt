@@ -15,7 +15,7 @@ object AtomicCrashLoader {
         val version = versions.find { it.supportedVersion.contains(serverVersion) }
         if (version == null) {
             logger.error("Could not find supported version for $serverVersion!")
-            logger.error("Supported versions: ${versions.map { it.supportedVersion }}")
+            logger.error("Supported versions: ${versions.flatMap { it.supportedVersion }}")
             return
         }
 
