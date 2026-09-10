@@ -3,12 +3,13 @@ package io.github.runkang10.atomicCrash.services
 import io.github.runkang10.atomicCrash.AtomicCrashAPI
 import io.github.runkang10.atomicCrash.version.NMS_1_21_4
 import io.github.runkang10.atomicCrash.version.NMS_26
+import io.github.runkang10.atomicCrash.version.NMS_26_3
 import io.github.runkang10.compactmono.services.ColoredLogger
 import org.bukkit.Bukkit
 
 object AtomicCrashLoader {
     fun load(logger: ColoredLogger) {
-        val versions = listOf(NMS_1_21_4, NMS_26)
+        val versions = listOf(NMS_1_21_4, NMS_26, NMS_26_3)
 
         val serverVersion = Bukkit.getMinecraftVersion()
         val version = versions.find { it.supportedVersion.contains(serverVersion) }
