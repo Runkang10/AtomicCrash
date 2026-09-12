@@ -55,17 +55,17 @@ class NMS_1_21_4 private constructor() : Version {
         player: ServerPlayer,
         center: Vec3,
     ): List<Packet<ClientGamePacketListener>> = listOf(
-        ClientboundTeleportEntityPacket(
-            player.id,
-            positionMoveRotation,
-            emptySet(),
-            true
-        ),
         ClientboundExplodePacket(
             center,
             Optional.of(vec3d),
             ParticleTypes.EXPLOSION,
             SoundEvents.GENERIC_EXPLODE
+        ),
+        ClientboundTeleportEntityPacket(
+            player.id,
+            positionMoveRotation,
+            emptySet(),
+            true
         ),
         particlePacketOf(ParticleTypes.ASH, center),
         particlePacketOf(ParticleTypes.BUBBLE, center),

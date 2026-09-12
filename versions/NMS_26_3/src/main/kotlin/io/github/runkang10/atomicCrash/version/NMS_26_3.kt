@@ -59,12 +59,6 @@ class NMS_26_3 private constructor() : Version {
         player: ServerPlayer,
         center: Vec3,
     ): List<Packet<ClientGamePacketListener>> = listOf(
-        ClientboundTeleportEntityPacket(
-            player.id,
-            positionMoveRotation,
-            emptySet(),
-            true
-        ),
         ClientboundExplodePacket(
             center,
             Float.MAX_VALUE,
@@ -73,6 +67,12 @@ class NMS_26_3 private constructor() : Version {
             ParticleTypes.ASH,
             SoundEvents.GENERIC_EXPLODE,
             weightedList,
+            true
+        ),
+        ClientboundTeleportEntityPacket(
+            player.id,
+            positionMoveRotation,
+            emptySet(),
             true
         ),
         particlePacketOf(ParticleTypes.ASH, center),
