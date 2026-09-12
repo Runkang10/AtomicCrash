@@ -17,32 +17,45 @@ body:
           required: true
     validations:
       required: true
+
   - type: input
     attributes:
       label: Server version
       placeholder: E.g. 26.2
     validations:
       required: true
+
+  - type: input
+    attributes:
+      label: Client version
+      placeholder: E.g. 26.2
+    validations:
+      required: true
+
   - type: textarea
     attributes:
       label: Plugins
       description: Provide the list of plugins of your server.
     validations:
       required: true
+
   - type: textarea
     attributes:
       label: Describe the bug
       description: A clear and concise description of what the bug is. Include screenshots if applicable.
     validations:
       required: true
+
   - type: textarea
     attributes:
       label: Steps to reproduce
       description: Steps to reproduce the behavior.
+
   - type: textarea
     attributes:
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
+
   - type: textarea
     attributes:
       label: Additional context
