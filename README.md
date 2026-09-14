@@ -19,11 +19,6 @@ crash, freeze, or disconnect depending on the client version, mods installed, an
 - **Post-Crash checking**\
   Checks if the player is actually crashed or not, after the command execution.
 
-## Limitations
-As of now, there are some limitations with this plugin:
-- Bedrock players are fully immune to this.
-- Due to the way how this plugin works, clients can install mods to block malformed packets.
-
 ## Commands
 | Command               | Description                                     |
 |-----------------------|-------------------------------------------------|
@@ -39,7 +34,9 @@ As of now, there are some limitations with this plugin:
 | `atomiccrash.command.core.reload` | Required to `/atomiccrash reload`.                                                                                                                                          | OP                                                                    |
 | `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
-## NOTE
+## Note & Limitations
 - The support goes from the latest version down to 1.21.4, but **Java 25 is required** for this plugin to work.
 - Some anticheat plugins and PacketEvents plugin may throw errors such as `NullPointerException` in the console for
   older versions like 1.8 (client version). This is unfortunately not something that I can and I will be able to fix.
+- Bedrock players are fully immune to this plugin.
+- Due to the way how this plugin works, clients can install mods to block malformed packets.
