@@ -40,4 +40,6 @@ As of now, there are some limitations with this plugin:
 | `atomiccrash.exempt.<number>`     | Protects the player from being crashed. A player can only be crashed by someone with a **higher** exemption number than their own or if the command is executed by console. | FALSE (assign this permission with permission plugins like LuckPerms) |
 
 ## NOTE
-This plugin supports from the latest version down to 1.21.4, but **Java 25 is required** for this plugin to work.
+- The support goes from the latest version down to 1.21.4, but **Java 25 is required** for this plugin to work.
+- Some anticheat plugins and PacketEvents plugin may throw errors such as `NullPointerException` in the console for
+  older versions like 1.8 (client version). This is unfortunately not something that I can and I will be able to fix.
