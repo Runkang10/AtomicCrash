@@ -5,6 +5,7 @@ import org.spongepowered.configurate.objectmapping.meta.Comment
 
 @ConfigSerializable
 data class DefaultSettings(
+    @Comment("DO NOT CHANGE THIS FIELD!")
     val version: Int = VERSION,
     val check: CheckSettings = CheckSettings()
 ) {

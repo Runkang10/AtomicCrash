@@ -1,9 +1,11 @@
 package io.github.runkang10.atomicCrash.configurations
 
 import org.spongepowered.configurate.objectmapping.ConfigSerializable
+import org.spongepowered.configurate.objectmapping.meta.Comment
 
 @ConfigSerializable
 data class DefaultTranslations(
+    @Comment("DO NOT CHANGE THIS FIELD!")
     val version: Int = DefaultSettings.VERSION,
     val prefix: String = "<aqua><b>[AtomicCrash]</b></aqua> <dark_gray>» </dark_gray>",
     val crash: CrashTranslations = CrashTranslations(),
