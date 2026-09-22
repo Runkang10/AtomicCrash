@@ -19,7 +19,7 @@ import java.util.*
 @Suppress("ClassName")
 class NMS_26_3 private constructor() : Version {
     companion object : VersionHeader {
-        override val supportedVersion = listOf("26.3")
+        override val supportedVersion = listOf("26.3", "26.4")
 
         override fun new() = NMS_26_3()
     }
